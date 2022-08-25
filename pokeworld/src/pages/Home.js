@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 const Home = () => {
-    const [pokemon , setPokemon] = useState("pikachu");
+    const [pokemon , setPokemon] = useState("");
     const [pokemonData , setPokemonData] = useState([]);
     const [pokemonType , setPokemonType] = useState("");
     
@@ -16,7 +16,8 @@ const Home = () => {
             pokeArray.push(result.data);
             setPokemonType(result.data.types[0].type.name);
             setPokemonData(pokeArray);
-            console.log(result);
+            
+            // console.log(result);
         } catch (e) {
             console.log(e);
         }
@@ -30,6 +31,8 @@ const Home = () => {
         e.preventDefault();
         fetchPokemons();
     };
+
+    
 
     return (
         <div className="App">
@@ -49,6 +52,10 @@ const Home = () => {
                 <img src={pokemon.sprites["front_default"]} />
                 <div className="pokemon-details">
                   <div className="detail-inner">
+                  <div className="field-outer">
+                      <div className="field-inner">name</div>
+                      <div className="field-inner">{pokemon.name}</div>
+                    </div>
                     <div className="field-outer">
                       <div className="field-inner">Type</div>
                       <div className="field-inner">{pokemonType}</div>
@@ -91,6 +98,10 @@ const Home = () => {
                     <div className="field-outer">
                       <div className="field-inner">Order</div>
                       <div className="field-inner">{pokemon.order}</div> 
+                    </div>
+                    <div className="field-outer">
+                      <div className="field-inner">Total number of generations</div>
+                      <div className="field-inner">{Object.keys(pokemon.sprites.versions).length}</div> 
                     </div>
                   
                   </div>
