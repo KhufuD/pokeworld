@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from "react";
 import classes from "./PokemonSearch.module.css";
 import axios from "axios";
+import PokemonFetchedList from "./PokemonFetchedList";
+import PokemonDetails from "./PokemonDetails";
 
 
 
-const Home = () => {
+const PokemonSearch = () => {
     const [pokemon , setPokemon] = useState("");
     const [pokemonData , setPokemonData] = useState([]);
     const [pokemonType , setPokemonType] = useState("");
-    const [pokemonList , setPokemonList] = useState([]);
+    // const [pokemonList , setPokemonList] = useState([]);
 
     const url = `https://pokeapi.co/api/v2/pokemon/`;
     
@@ -24,17 +26,17 @@ const Home = () => {
         }
     };
 
-    const completePokemonList = async () => {
-      const pokeList = [];
-      try{
-        const fullList = await axios.get(`${url}`);
-        pokeList.push(fullList.data);
-        setPokemonList(pokeList);
+    // const completePokemonList = async () => {
+    //   const pokeList = [];
+    //   try{
+    //     const fullList = await axios.get(`${url}`);
+    //     pokeList.push(fullList.data);
+    //     setPokemonList(pokeList);
 
-      } catch (e){
-        console.log("messed up");
-      }
-    };
+    //   } catch (e){
+    //     console.log("messed up");
+    //   }
+    // };
 
     
 
@@ -48,33 +50,17 @@ const Home = () => {
         fetchPokemons();
     };
 
-    useEffect(() => {
-      completePokemonList();
-    }, []);
+    // useEffect(() => {
+    //   completePokemonList();
+    // }, []);
 
 
 
     return (
         <div className="App">
- 
 
-          <div>{pokemonList.map((list) => {
-            return (
-              <div className={classes.container}> 
-              <h2>List of all the Available Pokemons is down Below</h2>
-                <div className={classes.listContainer}>{list.results.map((listName) => {
-                return(
-                  <div>
-                    <div className={classes.pokemonList} >
-                    {listName.name}
-                  </div>
-                  </div>
-                );
-              })}</div>
-              </div>
-            );
-          })}
-          </div>
+          
+          
 
           <form onSubmit={handleSubmit}>
             <label>
@@ -82,80 +68,15 @@ const Home = () => {
                 type="text"
                 onChange={handleChange}
                 placeholder="enter pokemon name"
+                className={classes.formInput}
               />
             </label>
           </form>
+          <PokemonDetails pokemonData={pokemonData} />
 
-
-          {pokemonData.map((pokemon) => {
-            return (
-              <div className="container" >
-                <img src={pokemon.sprites["front_default"]} />
-                <div className="pokemon-details">
-                  <div className="detail-inner">
-                  <div className="field-outer">
-                      <div className="field-inner">name</div>
-                      <div className="field-inner">{pokemon.name}</div>
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Type</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemonType}</div>
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Id</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemon.id}</div> 
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Height</div>
-                      <div className="field-inner">
-                        {" "}
-                        {Math.round(pokemon.height * 3.9)}"
-                      </div>
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Weight</div>
-                      <div className="field-inner">
-                        {" "}
-                        {Math.round(pokemon.weight)} KG
-                      </div>
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Number of Battles</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemon.game_indices.length}</div>
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Base Experience</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemon.base_experience}</div>
-                    </div>
-
-                    <div className="field-outer">
-                      <div className="field-inner">Abilities</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemon.abilities.length}</div> 
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Items Held</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemon.held_items.length}</div> 
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Moves</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemon.moves.length}</div> 
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Order</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemon.order}</div> 
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Total number of generations</div>
-                      <div className="field-inner">{Object.keys(pokemon.sprites.versions).length}</div> 
-                    </div>
-                  
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+    
         </div>
       );
 };
 
-export default Home;
+export default PokemonSearch;
