@@ -1,8 +1,14 @@
 import "./App.css";
-import Home from "./pages/Home";
+import PokemonSearch from "./components/PokemonSearch";
+
 
 function App() {
-  return <Home />;
+  return (
+    <>
+    <PokemonSearch />
+
+    </>
+  );
 }
 
 export default App;
