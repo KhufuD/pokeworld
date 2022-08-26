@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import classes from "./PokemonList.module.css";
+import classes from "./PokemonFetchedList.module.css";
 import axios from "axios";
 
 const PokemonFetchedList = () => {

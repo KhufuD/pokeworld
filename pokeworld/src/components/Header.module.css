@@ -1,0 +1,14 @@
+.header{
+    max-height: 120px;
+    height: 100%;
+    background-color: black;
+    padding: 0 32px;
+}
+.headerInner{
+    text-align: center;
+}
+
+.logoImg{
+    height: 72px;
+    padding: 24px 0;
+}
