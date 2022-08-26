@@ -6,64 +6,64 @@ const PokemonDetails = (props) => {
         <div>
             {props.pokemonData.map((pokemon) => {
             return (
-              <div className="container" >
-                <img src={pokemon.sprites["front_default"]} />
-                <div className="pokemon-details">
-                  <div className="detail-inner">
-                  <div className="field-outer">
-                      <div className="field-inner">name</div>
-                      <div className="field-inner">{pokemon.name}</div>
+              <div className={classes.detailContainer} >
+                <img src={pokemon.sprites["front_default"]} className={classes.pokemonImg}/>
+                <div className={classes.pokemonDetails}>
+                  <div className={classes.detailInner}>
+                  <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>name=&gt;</div>
+                      <div className={classes.fieldInner}>{pokemon.name}</div>
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Type</div>
-                      <div className="field-inner">{props.pokemonType}</div>
+                    {/* <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Type</div>
+                      <div className={classes.fieldInner}>{props.pokemonType}</div>
+                    </div> */}
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Id=&gt;</div>
+                      <div className={classes.fieldInner}>{pokemon.id}</div> 
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Id</div>
-                      <div className="field-inner">{pokemon.id}</div> 
-                    </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Height</div>
-                      <div className="field-inner">
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Height=&gt;</div>
+                      <div className={classes.fieldInner}>
                         {" "}
                         {Math.round(pokemon.height * 3.9)}"
                       </div>
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Weight</div>
-                      <div className="field-inner">
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Weight=&gt;</div>
+                      <div className={classes.fieldInner}>
                         {" "}
                         {Math.round(pokemon.weight)} KG
                       </div>
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Number of Battles</div>
-                      <div className="field-inner">{pokemon.game_indices.length}</div>
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Total Battles=&gt;</div>
+                      <div className={classes.fieldInner}>{pokemon.game_indices.length}</div>
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Base Experience</div>
-                      <div className="field-inner">{pokemon.base_experience}</div>
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Base Experience=&gt;</div>
+                      <div className={classes.fieldInner}>{pokemon.base_experience}</div>
                     </div>
 
-                    <div className="field-outer">
-                      <div className="field-inner">Abilities</div>
-                      <div className="field-inner">{pokemon.abilities.length}</div> 
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Abilities=&gt;</div>
+                      <div className={classes.fieldInner}>{pokemon.abilities.length}</div> 
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Items Held</div>
-                      <div className="field-inner">{pokemon.held_items.length}</div> 
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Items Held=&gt;</div>
+                      <div className={classes.fieldInner}>{pokemon.held_items.length}</div> 
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Moves</div>
-                      <div className="field-inner">{pokemon.moves.length}</div> 
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Moves=&gt;</div>
+                      <div className={classes.fieldInner}>{pokemon.moves.length}</div> 
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Order</div>
-                      <div className="field-inner">{pokemon.order}</div> 
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Order=&gt;</div>
+                      <div className={classes.fieldInner}>{pokemon.order}</div> 
                     </div>
-                    <div className="field-outer">
-                      <div className="field-inner">Total number of generations</div>
-                      <div className="field-inner">{Object.keys(pokemon.sprites.versions).length}</div> 
+                    <div className={classes.fieldOuter}>
+                      <div className={classes.fieldInner}>Generations=&gt;</div>
+                      <div className={classes.fieldInner}>{Object.keys(pokemon.sprites.versions).length}</div> 
                     </div>
                   
                   </div>
