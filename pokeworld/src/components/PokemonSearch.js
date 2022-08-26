@@ -93,9 +93,9 @@ const Home = () => {
                 <img src={pokemon.sprites["front_default"]} />
                 <div className="pokemon-details">
                   <div className="detail-inner">
-                    <div className="field-outer">
-                      <div className="field-inner">Name</div>
-                      <div className="field-inner" key={pokemon.id.toString()}>{pokemon.name}</div>
+                  <div className="field-outer">
+                      <div className="field-inner">name</div>
+                      <div className="field-inner">{pokemon.name}</div>
                     </div>
                     <div className="field-outer">
                       <div className="field-inner">Type</div>
@@ -144,7 +144,10 @@ const Home = () => {
                       <div className="field-inner">Order</div>
                       <div className="field-inner" key={pokemon.id.toString()}>{pokemon.order}</div> 
                     </div>
-
+                    <div className="field-outer">
+                      <div className="field-inner">Total number of generations</div>
+                      <div className="field-inner">{Object.keys(pokemon.sprites.versions).length}</div> 
+                    </div>
                   
                   </div>
                 </div>
