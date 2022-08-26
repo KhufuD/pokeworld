@@ -1,0 +1,9 @@
+.compareSearchBar{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.compareButton{
+    height: 36px;
+}

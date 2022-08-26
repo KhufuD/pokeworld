@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Compare.module.css";
+import PokemonDetails from "./PokemonDetails";
 import PokemonSearch from "./PokemonSearch";
 
 const Compare = () => {
@@ -10,8 +11,8 @@ const Compare = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleClick}>Compare</button>
+    <div className={classes.compareSearchBar}>
+      <button onClick={handleClick} className={classes.compareButton}>Compare</button>
       {isShown && <PokemonSearch />}
     </div>
   );
