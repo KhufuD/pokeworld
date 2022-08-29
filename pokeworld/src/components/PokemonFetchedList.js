@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import classes from "./PokemonFetchedList.module.css";
 import axios from "axios";
+import PokemonListDisplay from "./PokemonListDisplay";
 
 const PokemonFetchedList = () => {
   const [pokemonList , setPokemonList] = useState([]);
@@ -22,26 +22,9 @@ const PokemonFetchedList = () => {
     completePokemonList();
   }, []);
 
-
-    return(
-        <div>{pokemonList.map((list) => {
-            return (
-              <div className={classes.container}> 
-              <h2>List of all the Available Pokemons is down Below</h2>
-                <div className={classes.listContainer}>{list.results.map((listName) => {
-                return(
-                  <div>
-                    <div className={classes.pokemonList} >
-                    {listName.name}
-                  </div>
-                  </div>
-                );
-              })}</div>
-              </div>
-            );
-          })}
-          </div>
-    );
+  return(
+    <PokemonListDisplay pokemonList={pokemonList} />
+  )
 };
 
 export default PokemonFetchedList;

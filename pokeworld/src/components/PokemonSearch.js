@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import classes from "./PokemonSearch.module.css";
 import axios from "axios";
-import PokemonFetchedList from "./PokemonFetchedList";
+
 import PokemonDetails from "./PokemonDetails";
 
 
@@ -10,7 +10,7 @@ const PokemonSearch = () => {
     const [pokemon , setPokemon] = useState("");
     const [pokemonData , setPokemonData] = useState([]);
     const [pokemonType , setPokemonType] = useState("");
-    // const [pokemonList , setPokemonList] = useState([]);
+
 
     const url = `https://pokeapi.co/api/v2/pokemon/`;
     
@@ -26,17 +26,7 @@ const PokemonSearch = () => {
         }
     };
 
-    // const completePokemonList = async () => {
-    //   const pokeList = [];
-    //   try{
-    //     const fullList = await axios.get(`${url}`);
-    //     pokeList.push(fullList.data);
-    //     setPokemonList(pokeList);
 
-    //   } catch (e){
-    //     console.log("messed up");
-    //   }
-    // };
 
     
 
@@ -50,9 +40,6 @@ const PokemonSearch = () => {
         fetchPokemons();
     };
 
-    // useEffect(() => {
-    //   completePokemonList();
-    // }, []);
 
 
 
@@ -72,7 +59,7 @@ const PokemonSearch = () => {
               />
             </label>
           </form>
-          <PokemonDetails pokemonData={pokemonData} />
+          <PokemonDetails pokemonData={pokemonData} pokemonType={pokemonType}/>
 
     
         </div>

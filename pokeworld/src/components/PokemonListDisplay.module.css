@@ -24,9 +24,12 @@ h2{
     background-color: lightgrey;
 }
 
-
+.pokeListContainer{
+    list-style: none;
+}
 .pokemonList{
     width: 180px;
     font-size: 24px;
     line-height: 2;
+    text-transform: capitalize;
 }
