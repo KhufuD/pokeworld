@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-gap: 24px;
+  grid-template-columns: 1fr 1fr;
+
+  padding: 24px 36px;
+}
+
+.pokemonCards {
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
