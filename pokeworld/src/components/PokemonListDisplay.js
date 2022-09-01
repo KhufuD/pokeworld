@@ -12,9 +12,12 @@ const PokemonListDisplay = () => {
   } = useContext(AppContext);
   const pokemonList = useContext(PokemonsListContext);
 
-
-
+  
   const [search, setSearch] = useState("");
+  
+  const handleChange =()=> {
+    return console.log("the pokemon has been unchecked");
+  }
 
   return (
     <div className={classes.container}>
@@ -48,6 +51,7 @@ const PokemonListDisplay = () => {
               >
                 <input
                   type="checkbox"
+                  onChange={handleChange}
                   checked={selectedPokemons.includes(pokemonName)}
                 />
                 {pokemonName}
