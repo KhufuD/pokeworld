@@ -1,0 +1,64 @@
+.container {
+    height: fit-content;
+  
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #ccc;
+  
+    display: flex;
+    gap: 12px;
+  }
+  
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+  
+    border: 1px solid #ccc;
+  }
+  
+  .item {
+    height: fit-content;
+    display: grid;
+    align-items: baseline;
+    grid-template-columns: 100px 1fr;
+  }
+  
+  .label {
+    color: gray;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .body {
+    text-transform: capitalize;
+  }
+  
+  .abilities {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: unset;
+    margin: unset;
+  }
+  .ability {
+    text-transform: capitalize;
+    display: block;
+
+  }
+  
+  .details {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .favBtn {
+    border: 1px solid black;
+    background-color: black;
+    color: #ccc;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    width: 200px;
+  }
