@@ -67,7 +67,7 @@ function App() {
         <Header />
         <div className={classes.container}>
           <PokemonListDisplay />
-          {!!selectedPokemons.length && (
+          {selectedPokemons.length > 0 && (
             <div className={classes.pokemonCards}>
               {selectedPokemons.map((selectedPokemon) => (
                 <PokemonCard pokemonName={selectedPokemon} key={selectedPokemon}/>

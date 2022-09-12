@@ -55,7 +55,7 @@ const PokemonListDisplay = () => {
                   checked={selectedPokemons.includes(pokemonName)}
                 />
                 {pokemonName}
-                <font
+                <span
                   style={{
                     color: favoritePokemons.includes(pokemonName)
                       ? "red"
@@ -68,7 +68,7 @@ const PokemonListDisplay = () => {
                   }}
                 >
                   &#x2764;
-                </font>
+                </span>
               </div>
             );
           })}
