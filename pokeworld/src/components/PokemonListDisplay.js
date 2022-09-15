@@ -22,6 +22,7 @@ const PokemonListDisplay = () => {
   return (
     <div className={classes.container}>
       <h2>List of all the Available Pokemons is down Below</h2>
+
       <input
         value={search}
         className={classes.searchInput}

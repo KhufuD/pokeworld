@@ -7,6 +7,7 @@ import AppContext from "./contexts/AppContext";
 import PokemonsListContext from "./contexts/PokemonListContext";
 import { Url } from "./utilities/Url";
 
+
 import PokemonCard from "./components/PokemonCard";
 
 import classes from "./App.module.css";
@@ -15,7 +16,30 @@ function App() {
   const [selectedPokemons, setSelectedPokemons] = useState([]);
   const [favoritePokemons, setFavoritePokemons] = useState([]);
   const [pokemonsList, setPokemonsList] = useState([]);
+  const [offSet , setOffset] = useState(20);
+  
 
+ 
+  const shiftListForward = () => {
+    if(offSet < 1140){
+      setOffset(offSet + 20);
+    
+      axios
+      .get(`${Url}?offset=${offSet}&limit=20/`)
+      .then((response) => {
+        setPokemonsList(response.data.results);
+      })
+      .catch(() => {
+        console.log("Something is wrong with the Api please check later");
+      });  
+    }
+    else{
+      return;
+    }
+
+  }
+
+  
   const toggleSelection = (pokemonName) => {
     setSelectedPokemons((previousSelectedPokemons) => {
       if (previousSelectedPokemons.includes(pokemonName))
@@ -23,6 +47,39 @@ function App() {
       return previousSelectedPokemons.concat([pokemonName]);
     });
   };
+
+
+
+  const shiftListBackward = () => {
+    if (offSet > 0){
+      setOffset(offSet - 20);
+
+      axios
+      .get(`${Url}?offset=${offSet}&limit=20/`)
+      .then((response) => {
+        setPokemonsList(response.data.results);
+      })
+      .catch(() => {
+        console.log("Something is wrong with the Api please check later");
+      });
+    }else{
+      
+      axios
+      .get(`${Url}?offset=${offSet}&limit=20/`)
+      .then((response) => {
+        setPokemonsList(response.data.results);
+      })
+      .catch(() => {
+        console.log("Something is wrong with the Api please check later");
+      });
+
+      
+    }
+
+    
+
+
+  }
 
   const toggleFavorite = (pokemonName) => {
     setFavoritePokemons((previousFavoritePokemons) => {
@@ -39,7 +96,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(Url)
+      .get(`${Url}?offset=${0}&limit=20/`)
       .then((response) => {
         setPokemonsList(response.data.results);
       })
@@ -58,6 +115,7 @@ function App() {
     <AppContext.Provider
       value={{
         selectedPokemons,
+        // selectedLists,
         favoritePokemons,
         toggleFavorite,
         toggleSelection,
@@ -65,6 +123,15 @@ function App() {
     >
       <PokemonsListContext.Provider value={pokemonsList}>
         <Header />
+       <div className={classes.buttonContainer}>
+         <button className={classes.prevBtn} onClick={shiftListBackward}>
+                Prev
+            </button>
+            <button className={classes.nextBtn} onClick={shiftListForward}>
+            {/* <button className={classes.nextBtn} onClick={Next}> */}
+                Next
+            </button>
+        </div>
         <div className={classes.container}>
           <PokemonListDisplay />
           {selectedPokemons.length > 0 && (
